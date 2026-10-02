@@ -1,0 +1,48 @@
+dialog::backdrop {
+  background: rgba(27, 31, 42, 0.45);
+  backdrop-filter: blur(3px);
+}
+dialog[open] {
+  animation: pop 0.18s ease-out;
+}
+@keyframes pop {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.98);
+  }
+}
+
+.note {
+  transition:
+    transform 0.15s,
+    box-shadow 0.15s;
+}
+.note:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 28px -12px rgba(27, 31, 42, 0.25);
+}
+.note .del {
+  opacity: 0;
+  transition: opacity 0.15s;
+}
+.note:hover .del,
+.note:focus-within .del {
+  opacity: 1;
+}
+@media (hover: none) {
+  .note .del {
+    opacity: 1;
+  }
+}
+
+:focus-visible {
+  outline: 2px solid #4f46e5;
+  outline-offset: 2px;
+}
+@media (prefers-reduced-motion: reduce) {
+  *,
+  dialog[open] {
+    animation: none !important;
+    transition: none !important;
+  }
+}
